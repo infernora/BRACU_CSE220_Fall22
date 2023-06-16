@@ -1,0 +1,105 @@
+
+
+    class Stack_Arr:
+        def __init__(self,count):
+            self.top=-1
+            self.stack=[0]*count
+            
+        def push(self,elem):
+            self.top+=1
+            self.stack[self.top]=elem
+        
+        def pop(self):
+            self.stack[self.top]=0
+            self.top-=1
+
+    def check():
+        op_dict={'(':0,'{':0,'[':0}
+        for i in range(len(a)):
+            if a[i] in op_lis:
+                st.push(a[i])
+                op_dict[a[i]]=i
+            if a[i] in cl_lis:
+                if st.stack[st.top]=="(" and a[i]==")":
+                    st.pop()
+                elif st.stack[st.top]=="{" and a[i]=="}":
+                    st.pop()
+                elif st.stack[st.top]=="[" and a[i]=="]":
+                    st.pop()
+                elif st.top==-1:
+                    return f"This expression is NOT correct\nError at character #{i+1}. '{a[i]}'- not opened"
+                else:
+                    return f"This expression is NOT correct\nError at character #{op_dict[st.stack[st.top]]+1}. '{st.stack[st.top]}'- not closed."
+        if st.top!=-1:
+            return f"This expression is NOT correct\nError at character #{i+1}. '{st.stack[st.top]}'- not closed."
+        else:
+            return f"This expression is correct"
+        
+    op_lis=['(','{','[',]
+    cl_lis=[')','}',']']
+
+    a=input()    
+    st=Stack_Arr(len(a))
+    print(check())
+
+    1+2]*[3*3+{4–5(6(7/8/9)+10)–11+(12*8)]+14
+    This expression is NOT correct
+    Error at character #4. ']'- not opened
+
+    class Node:
+        def __init__(self, e, n):
+            self.elem = e
+            self.next = n
+            
+    class Stack_List:
+        def __init__(self):
+            self.head=Node(None,None)
+            self.top=-1
+        
+        def push(self,n):
+            if self.head.elem==None:
+                self.head=Node(n,None)
+            else:
+                tail=self.head
+                self.head=Node(n,None)
+                self.head.next=tail
+            self.top+=1
+        
+        def pop(self):
+            temp=self.head
+            self.head=self.head.next
+            temp=None
+            self.top-=1
+            
+    def check():
+        op_dict={'(':0,'{':0,'[':0}
+        for i in range(len(b)):
+            if b[i] in op_lis:
+                listack.push(b[i])
+                op_dict[b[i]]=i
+            if b[i] in cl_lis:
+                if listack.head.elem=="(" and b[i]==")":
+                    listack.pop()
+                elif listack.head.elem=="{" and b[i]=="}":
+                    listack.pop()
+                elif listack.head.elem=="[" and b[i]=="]":
+                    listack.pop()
+                elif listack.top==-1:
+                    return f"This expression is NOT correct\nError at character #{i+1}. '{b[i]}'- not opened"
+                else:
+                    return f"This expression is NOT correct\nError at character #{op_dict[listack.head.elem]+1}. '{listack.head.elem}'- not closed."
+        if listack.top!=-1:
+            return f"This expression is NOT correct\nError at character #{i+1}. '{listack.head.elem}'- not closed."
+        else:
+            return f"This expression is correct"
+        
+    op_lis=['(','{','[',]
+    cl_lis=[')','}',']']
+
+    b=input()    
+    listack=Stack_List()
+    print(check())       
+
+    1+2*[3*3+{4–5(6(7/8/9)+10)–11+(12*8)]+14
+    This expression is NOT correct
+    Error at character #10. '{'- not closed.

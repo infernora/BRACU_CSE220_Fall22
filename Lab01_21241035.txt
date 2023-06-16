@@ -1,0 +1,211 @@
+
+
+    #1) 
+    def shiftLeft(source,k):
+        j=0
+        while j<k:
+            i=0
+            while i<(len(source)-1):
+                source[i]=source[i+1]
+                i+=1
+            source[len(source)-1]=0
+            j+=1
+
+    source=[10,20,30,40,50,60]
+    shiftLeft(source,3)
+    print(source)
+
+    [40, 50, 60, 0, 0, 0]
+
+    #2)  
+    def rotateLeft(source,k):
+        j=0
+        while j<k:
+            i=0
+            x=source[0]
+            while i<(len(source)-1):
+                source[i]=source[i+1]
+                i+=1
+            source[len(source)-1]=x
+            j+=1
+
+    source=[10,20,30,40,50,60]
+    rotateLeft(source,3)
+    print(source)
+
+    [40, 50, 60, 10, 20, 30]
+
+    #3) 
+    def shiftRight(source,k):
+        j=0
+        while j<k:
+            i=len(source)-1
+            while i>0:
+                source[i]=source[i-1]
+                i-=1
+            source[0]=0
+            j+=1
+
+    source=[10,20,30,40,50,60]
+    shiftRight(source,3)
+    print(source)
+
+    [0, 0, 0, 10, 20, 30]
+
+    #4)
+    def RotateRight(source,k):
+        j=0
+        while j<k:
+            i=len(source)-1
+            x=source[len(source)-1]
+            while i>0:
+                source[i]=source[i-1]
+                i-=1
+            source[0]=x
+            j+=1
+
+                                                     
+    source=[10,20,30,40,50,60]
+    RotateRight(source,3)
+    print(source)
+
+    [40, 50, 60, 10, 20, 30]
+
+    #5)
+    def remove(source,size,idx):
+        i=idx
+        if idx>=0 and idx<size:
+            while i<(len(source)-1):
+                source[i]=source[i+1]
+                i+=1
+            source[len(source)-1]=0
+        else:
+            print('index is invalid')
+
+    source=[10,20,30,40,50,0,0]
+    remove(source,5,2)
+    print(source)
+
+    [10, 20, 40, 50, 0, 0, 0]
+
+    #6) 
+    def removeAll(source, size, element):
+        j=0
+        for i in range(size):
+            if source[i]!=element:
+                source[i-j]=source[i]
+                if (i-j)!=i:
+                    source[i]=element
+            else:
+                j+=1
+                
+        for i in range(len(source)-1):
+            if source[i]==element:
+                source[i]=0
+                
+                
+    source=[10,2,30,2,50,2,2,0,0]
+    removeAll(source,7,2)
+    print(source)
+
+    [10, 30, 50, 0, 0, 0, 0, 0, 0]
+
+    #7) 
+    source=[int(i) for i in input('Enter array: ').split(',')]
+
+    for i in range(len(source)-1):
+        sum1=0
+        sum2=0
+        for j in range(i+1):
+            sum1+=source[j]
+        for k in range(i+1,len(source)):
+            sum2+=source[k]
+        if sum1==sum2:
+            flag=True
+            break
+        else:
+            flag=False
+            
+    print(flag)
+
+    Enter array: 1,1,1,2,1
+    True
+
+    #8) 
+    n=int(input('Enter an integer: ')) 
+    array=[0]*(n**2)
+                                         
+    j=1
+    counter=0
+    zero_count=n-j
+    count=j
+    for i in range(len(array)):                   
+        if counter==n:
+            j+=1
+            counter=0
+            zero_count=n-j
+            count=j
+            
+        if zero_count!=0:
+            array[i]=0
+            zero_count-=1
+        else:
+            array[i]=count
+            count-=1
+            
+        counter+=1
+            
+    print(array)
+
+    Enter an integer: 3
+    [0, 0, 1, 0, 2, 1, 3, 2, 1]
+
+    #9)
+    source=[int(i) for i in input('Enter array: ').split(',')]
+
+    largest_count=0
+    count=0
+    for i in range(len(source)-1):
+        if source[i]==source[i+1]:
+            count+=1
+        else:
+            count=0
+            
+        if count>largest_count:
+            largest_count=count
+            
+    print(largest_count+1)
+
+    Enter array: 1,1,2,2,1,1,1,1
+    4
+
+    #10)
+    source=[int(i) for i in input('Enter array: ').split(',')]
+    new_arr1=[0]*len(source)
+    new_arr2=[0]*len(source)
+
+    for i in range(len(source)):
+        count1=0
+        for j in range(len(source)): 
+            if source[i]==source[j]:
+                count1+=1
+        if source[i] not in new_arr2 and count1>1:
+            new_arr1[i]=count1
+            new_arr2[i]=source[i]
+
+    for i in range(len(new_arr1)):
+        count2=0
+        for j in range(len(new_arr1)): 
+            if new_arr1[i]==new_arr1[j] and new_arr1[i]!=0:
+                count2+=1
+                
+        if count2>=2:
+            flag='True'
+            break
+        else:
+            flag='False'
+                
+    print(flag)  
+
+    Enter array: 3,4,6,3,4,7,4,6,8,6,6
+    False
